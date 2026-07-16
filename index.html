@@ -1,80 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rudra Mitra | Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rudra Mitra</title>
+<link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
-    <header>
-        <div class="profile-photo">
-            <img src="profile.jpg" alt="Rudra Mitra">
-        </div>
-
-        <h1>Rudra Mitra</h1>
-        <h3>Software Development Associate • AI Researcher</h3>
-
-        <nav>
-            <ul>
-                <li><a href="index.html">About</a></li>
-                <li><a href="publications.html">Publications</a></li>
-                <li><a href="resume.pdf">Resume</a></li>
-                <li><a href="experience.html">Experience</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="awards.html">Awards</a></li>
-                <li><a href="leadership.html">Leadership</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div class="container">
-
-        <div class="section">
-            <h2>About Me</h2>
-            <p>
-                I design and build intelligent software systems, full‑stack applications, 
-                and research solutions for robotics, extreme environments, and deep learning.
-            </p>
-        </div>
-
-        <div class="section">
-            <h2>Current Role</h2>
-            <p>Software Development Associate at 20|20 Mobile Corp</p>
-        </div>
-
-        <div class="section">
-            <h2>Research Interests</h2>
-            <ul>
-                <li>AI‑Driven Monitoring Systems</li>
-                <li>Hybrid Deep Learning Models</li>
-                <li>Robotics & Autonomous Navigation</li>
-                <li>Extreme Environment Analytics</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>News</h2>
-            <p><strong>2026</strong> — Portfolio website launched</p>
-            <p><strong>2025</strong> — Completed AI‑Driven Wildfire Monitoring System</p>
-            <p><strong>2024</strong> — Led robotics navigation project for IGVC</p>
-        </div>
-
-        <div class="section">
-            <h2>Contact</h2>
-            <p>Email: rudramitra.02.01@gmail.com</p>
-            <p>Phone: 203‑923‑5322</p>
-            <p>LinkedIn: linkedin.com/in/rudra-mitra</p>
-        </div>
-
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="icon-row">
+      <a href="mailto:rudramitra.02.01@gmail.com" title="Email">
+        <svg viewBox="0 0 24 24"><path d="M2 5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5zm2 .3V7l8 5 8-5V5.3l-8 5-8-5z"/></svg>
+      </a>
+      <a href="#" title="GitHub">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/rudra-mitra/" title="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.6 8.65 22 11 22 14.1V21h-4v-6.2c0-1.48-.03-3.4-2.07-3.4-2.07 0-2.4 1.62-2.4 3.3V21h-4V9z"/></svg>
+      </a>
     </div>
 
-    <footer>
-        © 2026 Rudra Mitra — Hosted on GitHub Pages
-    </footer>
+    <nav class="mainnav">
+      <a href="index.html" class="current">about</a>
+      <a href="publications.html">publications</a>
+      <a href="Resum__Rudra_Mitra__7_9_2026.pdf">resume</a>
+      <a href="experience.html">experience</a>
+      <div class="submenu-wrap">
+        <button class="submenu-toggle" onclick="toggleSubmenu(event)">more ▾</button>
+        <div class="submenu" id="submenu">
+          <a href="research.html">research</a>
+          <a href="projects.html">projects</a>
+          <a href="awards.html">awards</a>
+          <a href="leadership.html">leadership</a>
+          <a href="contact.html">contact</a>
+        </div>
+      </div>
+      <button class="mode-toggle" onclick="toggleMode()" title="Toggle dark mode">
+        <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
 
+<div class="container">
+  <div class="profile">
+    <div class="profile-text">
+      <h1><span class="bold">Rudra</span> <span class="light">Mitra</span></h1>
+      <p class="subtitle"><a href="experience.html">Software Development Associate at 20|20 Mobile Corp</a></p>
+
+      <p>Hello! I'm Rudra, a Computer Science graduate (B.Sc., minor in Mathematics, GPA 3.73) from the University of Bridgeport, currently working as a Software Development Associate at 20|20 Mobile Corp, where I build backend services, APIs, and distributed systems for the Team Hub platform.</p>
+
+      <p>My research background spans NASA-funded high-altitude ballooning missions, radiation sensor development, and deep learning for wildfire monitoring. I spent time as a Lab Research Assistant at the <a href="research.html">Extreme Environment Engineering Lab</a>, contributing to the Connecticut Space Grant program, and led STEM outreach through the university's STEM Bus.</p>
+
+      <p>I've co-authored several papers presented at ASEE Northeast Section Conferences, on topics ranging from wildfire monitoring and fire detection systems to interpretable AI and hybrid deep learning for pneumonia diagnosis. I also contributed to an autonomous navigation stack for the <a href="projects.html">IGVC 2025</a> competition and served as President of the Math Club and Treasurer of IEEE and Upsilon Pi Epsilon.</p>
+
+      <h4 class="section-label">Interest</h4>
+      <ul class="plain">
+        <li>AI-Driven Monitoring Systems</li>
+        <li>Hybrid Deep Learning Models</li>
+        <li>Robotics &amp; Autonomous Navigation</li>
+        <li>Extreme Environment Analytics</li>
+      </ul>
+
+      <h2 class="news-heading">news</h2>
+      <table class="news">
+        <tr><td class="date">May 2026</td><td>Started as <strong>Software Development Associate</strong> at 20|20 Mobile Corp.</td></tr>
+        <tr><td class="date">Jan 2026</td><td>Wrapped up my role as Lab Research Assistant at the <strong>Extreme Environment Engineering Lab</strong>.</td></tr>
+        <tr><td class="date">2025</td><td>Five papers accepted/presented across the <strong>ASEE Northeast Section Conference</strong> and an engineering research book chapter.</td></tr>
+        <tr><td class="date">2025</td><td>Earned certification for contributing to the autonomous navigation stack at <strong>IGVC 2025</strong>, Rochester, Michigan.</td></tr>
+        <tr><td class="date">2025</td><td>Awarded the <strong>UPE $1,000 scholarship</strong> for academic excellence in computing.</td></tr>
+        <tr><td class="date">2026</td><td>Recognized for organizing the <strong>UB IEEE Hackathon 2026</strong> at University of Bridgeport.</td></tr>
+        <tr><td class="date">Dec 2025</td><td>Graduated from the University of Bridgeport with a <strong>B.Sc. in Computer Science</strong>, minor in Mathematics.</td></tr>
+      </table>
+    </div>
+
+    <aside class="side">
+      <img src="profile.jpg" alt="Rudra Mitra">
+      <p class="address">
+        Software Development Associate<br>
+        20|20 Mobile Corp<br>
+        Bridgeport, Connecticut
+      </p>
+    </aside>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="icon-row">
+      <a href="mailto:rudramitra.02.01@gmail.com" title="Email">
+        <svg viewBox="0 0 24 24"><path d="M2 5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5zm2 .3V7l8 5 8-5V5.3l-8 5-8-5z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/rudra-mitra/" title="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.6 8.65 22 11 22 14.1V21h-4v-6.2c0-1.48-.03-3.4-2.07-3.4-2.07 0-2.4 1.62-2.4 3.3V21h-4V9z"/></svg>
+      </a>
+    </div>
+    <p>Feel free to email me if you need anything.</p>
+    <p>© 2026 Rudra Mitra. Hosted on GitHub Pages.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>

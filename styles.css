@@ -1,145 +1,367 @@
-/* ---------- GLOBAL ---------- */
+/* ============================================================
+   Rudra Mitra — academic portfolio, al-folio inspired theme
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700&family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Roboto+Mono:wght@400;500&display=swap');
 
 :root {
-    --bg: #ffffff;
-    --text: #222222;
-    --text-light: #555555;
-    --accent: #444444;
-    --card-bg: #f5f5f5;
-    --link: #0056b3;
+  --bg: #ffffff;
+  --text: #1f2328;
+  --text-light: #6a6f77;
+  --accent: #7a5195;
+  --accent-soft: #9c7bb8;
+  --rule: #e7e5e2;
+  --card-bg: #faf9f7;
+  --mono: 'Roboto Mono', ui-monospace, monospace;
+  --serif: 'Noto Serif', Georgia, serif;
+  --display: 'Roboto Slab', Georgia, serif;
+  --maxw: 900px;
+}
+
+* { box-sizing: border-box; }
+
+html.dark-mode {
+  --bg: #17181c;
+  --text: #dcdde0;
+  --text-light: #9b9ea3;
+  --accent: #c9a9e0;
+  --accent-soft: #a883c9;
+  --rule: #2c2d33;
+  --card-bg: #1e1f24;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Segoe UI", Roboto, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.7;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.75;
+  transition: background .2s ease, color .2s ease;
 }
 
-/* ---------- HEADER ---------- */
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-decoration-color: var(--accent-soft); }
 
-header {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 20px 20px;
-    text-align: center;
+/* ---------- TOP NAV ---------- */
+
+.topbar {
+  border-bottom: 1px solid var(--rule);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 20;
 }
 
-header h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 10px;
+.topbar-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-header h3 {
-    font-size: 1.1rem;
-    font-weight: 400;
-    color: var(--text-light);
-    margin-bottom: 20px;
+.icon-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
 }
 
-/* ---------- NAVIGATION ---------- */
+.icon-row a {
+  color: var(--text);
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+}
+.icon-row a:hover { color: var(--accent); }
+.icon-row svg { width: 100%; height: 100%; fill: currentColor; }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 18px;
+.mainnav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  letter-spacing: .02em;
+  flex-wrap: wrap;
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: var(--text);
-    font-size: 0.95rem;
-    font-weight: 500;
+.mainnav a {
+  color: var(--text);
+  padding: 4px 2px;
 }
+.mainnav a.current,
+.mainnav a:hover { color: var(--accent); }
 
-nav ul li a:hover {
-    color: var(--link);
+.submenu-wrap { position: relative; }
+.submenu-toggle {
+  background: none;
+  border: none;
+  font: inherit;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
-
-/* ---------- PROFILE PHOTO ---------- */
-
-.profile-photo {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+.submenu-toggle:hover { color: var(--accent); }
+.submenu {
+  display: none;
+  position: absolute;
+  top: 28px;
+  right: 0;
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 6px 0;
+  min-width: 150px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
 }
-
-.profile-photo img {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--accent);
+.submenu.open { display: block; }
+.submenu a {
+  display: block;
+  padding: 7px 14px;
+  color: var(--text);
+  white-space: nowrap;
 }
+.submenu a:hover { color: var(--accent); background: var(--rule); text-decoration: none; }
 
-/* ---------- MAIN CONTENT ---------- */
+.mode-toggle {
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text);
+}
+.mode-toggle:hover { border-color: var(--accent); color: var(--accent); }
+.mode-toggle svg { width: 15px; height: 15px; fill: currentColor; }
+
+/* ---------- LAYOUT ---------- */
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 48px 24px 80px;
 }
 
-.section {
-    background: var(--card-bg);
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 25px;
+.page-title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 0 0 30px;
 }
 
-.section h2 {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
+/* ---------- HOME / PROFILE ---------- */
+
+.profile {
+  display: grid;
+  grid-template-columns: 1fr 230px;
+  gap: 48px;
+  align-items: start;
 }
 
-.section p,
-.section li {
-    font-size: 1.05rem;
-    color: var(--text-light);
+.profile h1 {
+  font-family: var(--display);
+  font-size: 2.6rem;
+  margin: 0 0 6px;
+  letter-spacing: -0.5px;
+}
+.profile h1 .light { font-weight: 400; }
+.profile h1 .bold { font-weight: 700; }
+
+.subtitle {
+  margin: 0 0 22px;
+  font-size: 1.05rem;
 }
 
-/* ---------- FOOTER ---------- */
+.profile p { margin: 0 0 18px; }
+
+.side {
+  text-align: left;
+}
+.side img {
+  width: 100%;
+  border-radius: 50%;
+  display: block;
+  margin-bottom: 16px;
+}
+.side .address {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+h4.section-label {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.15rem;
+  margin: 34px 0 10px;
+}
+
+.profile ul.plain {
+  margin: 0 0 10px;
+  padding-left: 20px;
+}
+.profile ul.plain li { margin-bottom: 4px; }
+
+.news-heading {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 2.1rem;
+  text-transform: lowercase;
+  margin: 46px 0 18px;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 10px;
+}
+
+table.news {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+table.news td {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+table.news td.date {
+  font-family: var(--mono);
+  font-weight: 500;
+  white-space: nowrap;
+  padding-right: 24px;
+  color: var(--text);
+}
+
+/* ---------- GENERIC CONTENT SECTIONS (other pages) ---------- */
+
+.entry {
+  padding: 26px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.entry:last-child { border-bottom: none; }
+
+.entry-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.entry h2 {
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.entry .meta {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+.entry .org {
+  font-size: 0.98rem;
+  color: var(--text-light);
+  margin: 0 0 10px;
+  font-style: italic;
+}
+
+.entry ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+.entry ul li { margin-bottom: 6px; }
+
+.tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent-soft);
+  border-radius: 4px;
+  padding: 2px 8px;
+  margin-right: 8px;
+}
+
+/* Publications numbered list */
+
+.pub-list { counter-reset: pub; }
+.pub {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 18px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.pub:last-child { border-bottom: none; }
+.pub::before {
+  counter-increment: pub;
+  content: counter(pub) ".";
+  font-family: var(--mono);
+  color: var(--text-light);
+  font-size: 0.95rem;
+  padding-top: 3px;
+}
+.pub-title { font-weight: 600; font-size: 1.05rem; margin: 0 0 6px; }
+.pub-authors { margin: 0 0 4px; color: var(--text); }
+.pub-venue { margin: 0 0 8px; font-style: italic; color: var(--text-light); font-size: 0.92rem; }
+.pub-links a {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  margin-right: 14px;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+}
+
+/* Contact page */
+
+.contact-block { font-family: var(--mono); font-size: 0.95rem; }
+.contact-block p { margin: 0 0 10px; }
+.contact-block .label { color: var(--text-light); display: inline-block; width: 100px; }
+
+/* Footer */
 
 footer {
-    text-align: center;
-    padding: 40px 20px;
-    font-size: 0.9rem;
-    color: var(--text-light);
+  border-top: 1px solid var(--rule);
+  margin-top: 40px;
+}
+.footer-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 28px 24px;
+  text-align: center;
+}
+.footer-inner .icon-row { justify-content: center; margin-bottom: 12px; }
+.footer-inner p {
+  margin: 4px 0;
+  font-size: 0.82rem;
+  color: var(--text-light);
 }
 
-/* ---------- MOBILE LAYOUT ---------- */
+/* ---------- RESPONSIVE ---------- */
 
-@media (max-width: 768px) {
-
-    header {
-        padding: 30px 15px;
-    }
-
-    header h1 {
-        font-size: 1.7rem;
-    }
-
-    nav ul {
-        gap: 12px;
-    }
-
-    .container {
-        padding: 15px;
-    }
-
-    .section {
-        padding: 15px;
-    }
-
-    .profile-photo img {
-        width: 130px;
-        height: 130px;
-    }
+@media (max-width: 720px) {
+  .profile { grid-template-columns: 1fr; }
+  .side { display: flex; align-items: center; gap: 18px; }
+  .side img { width: 100px; margin-bottom: 0; }
+  .profile h1 { font-size: 2.1rem; }
+  .mainnav { gap: 14px; }
+  .pub { grid-template-columns: 24px 1fr; gap: 10px; }
 }
